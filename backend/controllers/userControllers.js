@@ -30,24 +30,23 @@ const signup = asyncHandler(async (req, res) => {
   }
 });
 
-
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-    if (user && (await user.matchPassword(password))) {
-        generateToken(res, user._id);
-        res.status(200).json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        isAdmin: user.isAdmin,
-        isMaintananceStaff: user.isMaintananceStaff,
-        isOwner: user.isOwner,
-        });
-    } else {
-        res.status(401);
-        throw new Error("Invalid email or password");
-    }
-})
+  if (user && (await user.matchPassword(password))) {
+    generateToken(res, user._id);
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      isMaintananceStaff: user.isMaintananceStaff,
+      isOwner: user.isOwner,
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid email or password");
+  }
+});
 
-export { signup,authUser };
+export { signup, authUser };

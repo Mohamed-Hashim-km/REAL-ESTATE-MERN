@@ -8,8 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://real-estate-mern-gcnc.onrender.com",
-        changeOrigin: true,
+        target: "http://localhost:3000",
       },
     },
   },

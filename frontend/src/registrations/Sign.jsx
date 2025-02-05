@@ -21,8 +21,6 @@ const Sign = () => {
     e.preventDefault();
     try {
       const res = await sign({ name, email, password }).unwrap();
-    
-      
 
       dispatch(setCredentials(res));
       navigate("/home");

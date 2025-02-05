@@ -11,7 +11,8 @@ const Login = () => {
   const {userInfo}=useSelector(state=>state.auth)
   console.log(userInfo);
   
-
+ 
+  
   console.log(email, password);
 
   const dispatch = useDispatch();

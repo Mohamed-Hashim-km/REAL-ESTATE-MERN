@@ -21,6 +21,7 @@ const Sign = () => {
     e.preventDefault();
     try {
       const res = await sign({ name, email, password }).unwrap();
+      console.log(res);
 
       dispatch(setCredentials(res));
       navigate("/home");
@@ -31,7 +32,7 @@ const Sign = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/");
+      navigate("/home");
     }
   }, [userInfo, navigate]);
 

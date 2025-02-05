@@ -9,6 +9,7 @@ export default defineConfig({
     proxy: {
       "/api": {
         target: "https://real-estate-mern-gcnc.onrender.com",
+        changeOrigin: true,
       },
     },
   },

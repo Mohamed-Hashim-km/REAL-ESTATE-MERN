@@ -25,7 +25,7 @@ const Sign = () => {
       
 
       dispatch(setCredentials(res));
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       toast.error(error?.data?.message);
     }

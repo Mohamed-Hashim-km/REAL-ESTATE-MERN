@@ -21,10 +21,8 @@ const Sign = () => {
     e.preventDefault();
     try {
       const res = await sign({ name, email, password }).unwrap();
-      console.log(res);
-
       dispatch(setCredentials(res));
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       toast.error(error?.data?.message);
     }
@@ -32,7 +30,7 @@ const Sign = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate("/home");
+      navigate("/");
     }
   }, [userInfo, navigate]);
 

@@ -22,7 +22,6 @@ const Sign = () => {
     try {
       const res = await sign({ name, email, password }).unwrap();
       console.log(res);
-
       dispatch(setCredentials(res));
       navigate("/");
     } catch (error) {

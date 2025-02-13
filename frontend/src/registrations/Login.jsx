@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { useLoginMutation } from "../slices/userApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/authSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,9 @@ const Login = () => {
       dispatch(setCredentials(res));
       navigate("/")
     } catch (error) {
-      alert(error?.data?.message);
+      toast.error(error?.data?.message,{
+        toastId:1
+      });
     }
   };
 

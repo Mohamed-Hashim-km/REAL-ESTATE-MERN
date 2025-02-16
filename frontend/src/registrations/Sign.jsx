@@ -4,6 +4,7 @@ import { useSignMutation } from "../slices/userApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Sign = () => {
   const [name, setName] = useState("");
@@ -12,7 +13,7 @@ const Sign = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [sign] = useSignMutation();
+  const [sign,{isLoading}] = useSignMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
   console.log(userInfo);
@@ -72,7 +73,7 @@ const Sign = () => {
             </div>
 
             <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
-              Sign Up
+            {isLoading ?<Loader/> :"Sign Up"}
             </button>
           </form>
 

@@ -4,6 +4,7 @@ import { useLoginMutation } from "../slices/userApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import Loader from "../components/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const Login = () => {
 
   const navigate=useNavigate()
 
-  const [login] = useLoginMutation();
+  const [login,{isLoading}] = useLoginMutation();
   const submitHander = async (e) => {
     e.preventDefault();
     try {
@@ -45,7 +46,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="h-screen bg-gray-100 flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Log In</h2>
 
@@ -69,9 +70,9 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
+            
             <button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition-colors">
-              Log In
+            {isLoading ? <Loader/>: "Log In"}
             </button>
           </form>
 

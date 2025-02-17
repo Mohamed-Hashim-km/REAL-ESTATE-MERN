@@ -3,6 +3,7 @@ import Login from "./registrations/Login";
 import Sign from "./registrations/Sign";
 import Homepage from "./screens/Homepage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/sign" element={<Sign />} />
       </Routes>
+      <Footer/>
     </>
   );
 };
